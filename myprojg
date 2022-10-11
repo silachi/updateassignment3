@@ -1,0 +1,293 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace meracode
+{   public class Student
+    {
+        private string name;
+        private  string city;
+        private double gpa;
+        private double avgMarks;
+      
+
+        //  Constructor will be used to set values of name, city and gpa
+        public Student(string name, string city, double gpa)
+        {
+            this.name = name;
+            this.city = city;
+            this.gpa = gpa;
+
+        }
+        public Student(string name, string city, double gpa, double avgMarks)
+        {
+            this.name = name;
+            this.city = city;
+            this.gpa = gpa;
+            this.avgMarks = avgMarks;
+        }
+        // get will be used to get value of names, city and gpa out of this class
+        public string Name
+        {
+            get { return name; }
+        }
+        public string City
+        {
+            get { return city; }
+        }
+        public double Gpa
+        {
+             get { return gpa; }
+        }
+       public double AvgMarks
+        {
+            get { return avgMarks;}
+            set { avgMarks = value; }
+        }
+    }
+    
+   
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+      
+
+
+        // 01
+
+        List<Student> students = new List<Student>();
+            Student studObj = new Student("Umar", "Rawalpindi", 3.85);
+            students.Add(studObj);
+
+            // 02
+
+            studObj = new Student("Hussain", "Lahore", 3);
+            students.Add(studObj);
+
+            // 03
+            studObj = new Student("Hisham", "Lahore", 3.5);
+            students.Add(studObj);
+
+            // 04
+            studObj = new Student("Rauf", "Rawalpindi", 2.9);
+            students.Add(studObj);
+
+            // 05
+            studObj = new Student("Hamza", "Quetta", 3.2);
+            students.Add(studObj);
+
+            // 06
+            studObj = new Student("Fahad", "Multan", 2.5);
+            students.Add(studObj);
+
+            // 07
+            studObj = new Student("Talha", "Quetta", 3.3);
+            students.Add(studObj);
+
+            // 08
+            studObj = new Student("Razzaq", "Lahore", 2.6);
+            students.Add(studObj);
+
+            // 09
+            studObj = new Student("Zaheer", "Rawalpindi", 2.7);
+            students.Add(studObj);
+
+            // 10
+            studObj = new Student("Ahmed", "Lahore", 3.5);
+            students.Add(studObj);
+
+            // 11
+            studObj = new Student("Asif", "Rawalpindi", 3.8);
+            students.Add(studObj);
+
+            // 12
+            studObj = new Student("Amir", "Rawalpindi", 2.7);
+            students.Add(studObj);
+
+            // 13
+            studObj = new Student("Kashif", "Multan", 4);
+            students.Add(studObj);
+
+            // 14
+            studObj = new Student("Hafeez", "Lahore", 3.44);
+            students.Add(studObj);
+
+            // 15
+            studObj = new Student("Khalil", "Lahore", 3.2);
+            students.Add(studObj);
+
+            //foreach (var item in students)
+            //{
+            //    Console.WriteLine(item.Name);
+            //}
+
+            Dictionary <string,List<Student>> mydict = new Dictionary<string,List<Student>>();
+            List<Student> studentAbove = new List<Student>();
+            List<Student> studentBelow = new List<Student>();
+            List<String> greatOrLess = new List<string>() { "> 3","< 3" };
+            
+
+            List<string> cities = new List<string>() { "Lahore", "Rawalpindi", "Quetta", "Multan" };
+            //for (int i = 0; i < students.Count; i++)
+            //{
+
+            //    if (students[i].City == "Lahore" && students[i].Gpa >=3 )
+            //    {
+            //     studentl3.Add(students[i]);
+            //    }
+            //    if (students[i].City == "Lahore")
+            //    {
+            //        studentl.Add(students[i]);
+            //    }
+            //    if (students[i].Gpa >= 3)
+            //    {
+            //        student3.Add(students[i]);
+            //    }
+            //}
+
+            for (int i = 0; i < cities.Count; i++)
+            {
+                for (int z = 0; z < students.Count; z++)
+                {
+
+                      if (students[z].City == cities[i] && students[z].Gpa >=3)
+                    {
+                        studentAbove.Add(students[z]);
+                        
+                    }
+                     else  if(students[z].City == cities[i] && students[z].Gpa < 3)
+                    {
+                        studentBelow.Add(students[z]);
+                      
+                    }
+                    
+                }
+                
+
+                mydict.Add(cities[i] + greatOrLess[0], studentAbove);
+                mydict.Add(cities[i] + greatOrLess[1], studentBelow);
+                studentAbove = new List<Student>();
+                studentBelow = new List<Student>();
+
+            }
+
+
+            // List<string> cities = new List<string>();
+            //  for
+            //        for 
+            //                if (student[j].City == cities[i])
+            //                converttostring(cities[i]).add(students[j]
+            // [lahore, quetta, rawalpindi
+            // ConvertTostring(array[0]) 
+            //mydict.Add("l3", studentl3);
+            //mydict.Add("3", student3);
+            //mydict.Add("l", studentl3);
+
+            // obj.name[1]
+
+            //foreach (var item in studentl3)
+            //{
+            //    Console.WriteLine(item.Name +" \t " + item.Gpa + "\t "+ item.City);
+
+            //}
+
+            //foreach (var index in mydict["Lahoreabove3"])
+            //{
+            //    Console.WriteLine(index.Name + "\t" + index.City + "\t" + index.Gpa);
+            //}
+
+            //foreach (var index in mydict["Lahorebelow3"])
+            //{
+            //    Console.WriteLine(index.Name + "\t" + index.City + "\t" + index.Gpa);
+            //}
+            //foreach (var index in mydict["Rawalpindiabove3"])
+            //{
+            //    Console.WriteLine(index.Name + "\t" + index.City + "\t" + index.Gpa);
+            //}
+            //foreach (var index in mydict["Rawalpindibelow3"])
+            //{
+            //    Console.WriteLine(index.Name + "\t" + index.City + "\t" + index.Gpa);
+            //}
+            for (int i = 0; i<cities.Count ; i++)
+            {
+                for (int z = 0; z < greatOrLess.Count; z++)
+                {
+                    foreach (var index in mydict[cities[i]+greatOrLess[z]])
+                    {
+                        Console.WriteLine(index.Name + "\t" + index.City + "\t" + index.Gpa);
+                    }
+                }
+            }
+
+            // Task 2
+            Console.WriteLine("\n \n Task 2 \n \n");
+
+            for (int i = 0; i < cities.Count; i++)
+            {
+               
+                    foreach (var index in mydict[cities[i] + greatOrLess[0]])
+                    {
+                        Console.WriteLine(index.Name + "\t" + index.City + "\t" + index.Gpa);
+                    }
+                
+            }
+
+            // Task 3
+            double marksAssign1;
+            double marksAssign2;
+            double marks;
+            List<Student> avgListGreat = new List<Student>();
+            List<Student> avgListLess = new List<Student>();
+            int j = 0;
+            int k = 0;
+            for (int i = 0; i < cities.Count; i++)
+            {
+
+                foreach (var index in mydict[cities[i] + greatOrLess[0]])
+                {
+                    Console.WriteLine("______________________________________________________");
+                    Console.WriteLine(index.Name + "\t" + index.City + "\t" + index.Gpa);
+                    Console.Write("Kindly enter marks of Assignment 1 = ");
+                    marksAssign1 = Convert.ToDouble(Console.ReadLine());
+                    Console.Write("Kindly enter marks of Assignment 2 = ");
+                    marksAssign2 = Convert.ToDouble(Console.ReadLine());
+                    marks = ((marksAssign1 + marksAssign2) / 2);
+                    if (marks >= 90)
+                    {
+                       
+                       
+                        // hussain will it work i obj ko overwrite karein
+                        studObj = new Student(index.Name, index.City, index.Gpa, marks);
+                        avgListGreat.Add(studObj);
+                        j++;
+                    }
+                    else
+                    {
+                        //students[j].AvgMarks = studObj.AvgMarks;
+                       
+                        studObj = new Student(index.Name, index.City, index.Gpa, marks);
+                        avgListLess.Add(studObj);
+                        k++;
+                    }
+                }
+            }    
+                    mydict.Add(" >= 90", avgListGreat);
+                    mydict.Add(" <= 90", avgListLess);
+                    
+                            
+            foreach (var index in mydict[" >= 90"])
+            {
+                Console.WriteLine(index.Name + "\t" + index.City + "\t" + index.Gpa + "\t" + index.AvgMarks);
+            }
+
+            Console.ReadLine();
+
+        }
+    }
+}
